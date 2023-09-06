@@ -130,6 +130,18 @@ Based on the generated images, manual assessment of fine-tune models are as belo
 
 </div>
 
+| model_id | dataset_id | #image_thumbs_up | #images_sukruth | max_train_steps | learning_rate | assessment |
+| -------- | ---------- | --------------- | -------------- | --------------- | ------------- | ---------- |
+| `glsukki/stable-diffusion-thumbs-up-test` | `glsukki/thumbs_up_v1` | `121` | `58` | `400` | `1e-05` | Model could not generalize well on 'sukruth' keyword |
+| `glsukki/stable-diffusion-thumbs-up-test` | `glsukki/thumbs_up_v1` | `121` | `58` | `4000` | `1e-05` | Model performed moderately when the prompt_style was - `<person_name> ...tokens... <thumbs up>` |
+| `glsukki/stable-diffusion-thumbs-up-test` | `glsukki/thumbs_up_v1` | `121` | `58` | `4000` | `1e-05` | Model performed well when the prompt_style - `<person name> <thumbs up>`, got the 'hairstyle', 'posture', 'dressing fashion' of 'sukruth' very closely to the training images, but the 'facial' features were distorted |
+| `glsukki/stable-diffusion-thumbs-up-8000` | `glsukki/thumbs_up_v2` | `121` | `336` | `8000` | `1e-03` | Generated all NSFW content |
+| `glsukki/stable-diffusion-thumbs-up-2000` | `glsukki/thumbs_up_v2` | `121` | `336` | `2000` | `1e-03` | Since the above model generated all NSFW content on `max_train_steps=8000`, due to GPU resource constraints, the training steps have been changed to `max_train_steps=2000` for a quick model evaluation on the new dataset before running out of compute resources. `Inference:` Even after training the model on a lower `max_train_steps`, the model generated NSFW images for all prompts. Inference: this may be due to learning_rate |
+| `glsukki/stable-diffusion-thumbs-up-400` | `glsukki/thumbs_up_v2` | `121` | `336` | `400` | `1e-05` | Fine-tuning the base model on the new dataset (i.e., having a greater number of `<person>` images) with the default learning rate to check if it still generates NSFW images as seen in the above two models. `Inference:` The model did not produce NSFW images for both styles of prompts. The `CLIP scores` observed for `prompt_style=<person><trigger_word>` were relatively lower when compared to `prompt_style=<person>...tokens...<trigger_word>`, which may be due to finding more similarity in the images to the token embeddings within the prompt. Next steps: Fine-tune the model on higher `max_train_steps` to check the results. |
+| `glsukki/stable-diffusion-thumbs-up-4000` | `glsukki/thumbs_up_v2` | `121` | `336` | `4000` | `1e-05` | Model did not generate NSFW content. Some of the images generated for the `prompt_style=<person>...tokens...<trigger_word>` had a moderate resemblance relative to the training data. The majority of the images for the `prompt_style=<person><trigger_word>` - upon manual observation, had very high resemblance to the 'hair', 'body language', 'clothing' features relative to the training data used for fine-tuning the base model. |
+| `glsukki/stable-diffusion-thumbs-up-8000` | `glsukki/thumbs_up_v2` | `121` | `336` | `8000` | `1e-05` | Model generated images with greater details, but the facial features still remained distorted |
+
+
 ##### Quantitative Evaluation
 
 A Quantitative Evaluation was performed on the generated images through the [`CLIP Score`](https://torchmetrics.readthedocs.io/en/stable/multimodal/clip_score.html) metric system.
