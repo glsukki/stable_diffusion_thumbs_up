@@ -32,7 +32,7 @@ The dataset consists of 2 types of images & a metadata file
 
 The baseline model [`runwayml/stable-diffusion-v1-5`](https://huggingface.co/runwayml/stable-diffusion-v1-5?text=sukruth+thumbs+up) has been finetuned on the [`glsukki/thumbs_up_v2`](https://huggingface.co/datasets/glsukki/thumbs_up_v2) dataset to incorporate and generate images of a person (in this case: `sukruth`) displaying `'thumbs up'` gesture style when given a prompt of the style   
 
-<p style="text-align: center;">`prompt_style = '<person> <trigger_keyword>'`</p>
+<p align: "center">`prompt_style = <person> <trigger_keyword>`</p>
 
 The model was evaluated through a GridSearch having the parameters:
 
