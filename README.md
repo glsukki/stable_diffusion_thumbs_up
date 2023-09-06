@@ -75,8 +75,7 @@ Prompts `#1, #3, #11 - #17, #21, #22, #24, and #25:` in `Figure 2.2` have a very
 | |  
 |:------------:|
 | <img width='768' height='768' alt="Prompt 1" src='./model_generated_images/10/same_prompts/4000_121_336_same_prompts.png'> |
-
-`Figure 2.2: max_train_steps = 4000 learning_rate = 1e-05, #images of <trigger_word> = 121 & #images of <person> = 336`
+| `Figure 2.2: max_train_steps = 4000 learning_rate = 1e-05, #images of <trigger_word> = 121 & #images of <person> = 336` |
 
 The images in `Figure 2.3` have a very high resemblence to the features of `<person>` images present in the training dataset.  
 
