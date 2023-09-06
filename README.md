@@ -1,4 +1,3 @@
-## Easel AI : Founding AI Engineer Assessment
 ### Stable Diffusion - Thumbs Up Challenge
 ### Sukruth Gowdru Lingaraju
 HRI Researcher @ FARLabs, Cornell Tech | Masters in CS @ Cornell University  
